@@ -11,27 +11,46 @@
     height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
-    background: radial-gradient(circle at top left, #ff9a9e, #fecfef 60%, #f6d5f7);
+    padding-top: 50px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
     text-align: center;
     overflow: hidden;
+    /* Fondo con imagen */
+    background: url('Amor.jpg') no-repeat center center;
+    background-size: cover;
+    position: relative;
+  }
+
+  /* Overlay oscuro para que se lea bien el contenido */
+  body::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 0;
   }
 
   h1 {
     font-family: 'Great Vibes', cursive;
     font-size: 3em;
-    margin-bottom: 20px;
+    margin: 0 15px 25px;
     color: #fff;
-    text-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+    text-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
     animation: fadeIn 2s ease-in-out;
+    z-index: 1;
+    position: relative;
+    line-height: 1.2em;
   }
 
   #timer {
     display: flex;
-    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
     font-size: 2em;
     background: rgba(255, 255, 255, 0.15);
     padding: 20px 35px;
@@ -39,12 +58,15 @@
     box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
     animation: popIn 1.2s ease-out;
+    z-index: 1;
+    position: relative;
   }
 
   .time {
     display: flex;
     flex-direction: column;
     align-items: center;
+    min-width: 60px;
   }
 
   .time div {
@@ -63,7 +85,8 @@
     font-size: 1.3em;
     font-weight: 600;
     letter-spacing: 1px;
-    text-shadow: 0 0 8px rgba(255,255,255,0.7);
+    text-shadow: 0 0 8px rgba(0,0,0,0.7);
+    z-index: 1;
   }
 
   .celebrate {
@@ -71,8 +94,10 @@
     font-family: 'Great Vibes', cursive;
     margin-top: 25px;
     color: #fff;
-    text-shadow: 0 0 20px rgba(255,255,255,0.9);
+    text-shadow: 0 0 20px rgba(0,0,0,0.8);
     animation: pulse 1.5s infinite ease-in-out;
+    z-index: 1;
+    position: relative;
   }
 
   @keyframes pulse {
@@ -96,16 +121,35 @@
     color: #fff;
     opacity: 0.85;
     animation: float 6s linear infinite;
+    z-index: 1;
   }
 
   @keyframes float {
     0% { transform: translateY(0) scale(1); opacity: 1; }
     100% { transform: translateY(-900px) scale(1.6); opacity: 0; }
   }
+
+  /* Responsive para móviles */
+  @media (max-width: 480px) {
+    h1 {
+      font-size: 2em;
+      margin: 0 15px 20px;
+    }
+    #timer {
+      font-size: 1.5em;
+      padding: 12px 15px;
+    }
+    .time {
+      min-width: 50px;
+    }
+    .celebrate {
+      font-size: 2em;
+    }
+  }
 </style>
 </head>
 <body>
-  <h1 style="margin-left:15px; margin-right:15px;" >Próximo abrazo con mi gorda Pou 💕 en:</h1>
+  <h1>Próximo abrazo con mi gorda Pou 💕 en:</h1>
   <div id="timer">
     <div class="time"><div id="days">0</div><span>días</span></div>
     <div class="time"><div id="hours">0</div><span>horas</span></div>
